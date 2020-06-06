@@ -1,30 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  padding-bottom: 10px;
-  border-bottom: 5px solid #fdf6f6;
-  display: flex;
-`;
-
-export const Img = styled.img`
-  flex-basis: 10%;
-  width: 100px;
-  height: 100px;
-`;
-
-export const Ratings = styled.div`
-  width: 80px;
-  height: 40px;
-  border-radius: 0.28571429rem;
-  color: #fff;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 39px;
-  background: #5ba829;
-  border-color: #5ba829 !important;
-  text-align: center;
-`;
-
 export const Description = styled.div`
   height: 300px;
   flex-basis: 80%;
@@ -51,28 +26,85 @@ export const Description = styled.div`
   }
 `;
 
-export const Resturant = styled.div`
-  flex-basis: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  cursor: pointer;
-  height: {
-    ${(props) => (props.getHeight ? "200px" : "auto")}
+export const FlightDetails = styled.span`
+  display: block;
+  position: relative;
+  border-radius: 0.285714285714286rem;
+  padding: 1rem 0px 1rem 1rem;
+  transition-duration: 0.285714285714286s;
+  transition-timing-function: ease-out;
+  background: #fff;
+  margin-bottom: 1em;
+  border: 1px solid #ebebeb;
+
+  overflow: hidden;
+  margin-top: 1rem;
+
+  &:hover {
+    box-shadow: -5px 30px 55px #bbb;
+    border: 1px solid #fff;
+    z-index: 1;
   }
-  div.contact {
-    color: red;
-    font-size: 16px;
+
+  .flightDurationAndStops {
+    text-align: center;
   }
-  div.name {
-    background: 0 0;
-    color: #616469;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
+  .top-aligned-row {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: inherit;
+    justify-content: inherit;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100% !important;
+    padding: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
-  div.food {
-    color: #a29d9d;
-    font-size: 14px;
+  .text-center {
+    text-align: center;
+  }
+  .flightDurationAndStops {
+    background: none #fff;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: none;
+    margin-top: 1em;
+    text-align: center;
+    font-size: 0.78571429rem;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: baseline;
+    margin: 0 0.14285714em;
+    background-color: #e8e8e8;
+    background-image: none;
+    padding: 0.5833em 0.833em;
+    color: rgba(0, 0, 0, 0.6);
+    text-transform: none;
+    font-weight: 700;
+    border: 0 solid transparent;
+    border-radius: 0.28571429rem;
+    transition: background 0.1s ease;
+    margin: 14px;
+  }
+  .side-margin-5 {
+    margin: 0px 5px;
+  }
+  .flex-bottom {
+    align-items: flex-end;
+    justify-content: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .flex-center {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
