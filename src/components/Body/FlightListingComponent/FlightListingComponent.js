@@ -17,7 +17,6 @@ class FlightListingComponent extends React.Component {
     const airlineName = airlinesData.filter(
       (airline) => airline.shortName === id && airline.useage === "Y"
     );
-    console.log(airlineName);
     return airlineName[0].name;
   };
 
@@ -35,23 +34,26 @@ class FlightListingComponent extends React.Component {
       countryFrom: { name: countryFromName },
       countryTo: { name: countryToName },
       price,
+      route,
     } = lists;
     return (
       <Col>
         <Row className="top-aligned-row">
-          <Col xs={2} className="text-center">
-            {airlines &&
-              airlines.map((airline) => (
-                <>
-                  <Image
-                    src={`https://goibibo.ibcdn.com/images/v2/carrierImages/${airline}.gif`}
-                    className="ui fluid rounded image airline-logo"
-                  />
-                  <p>{this.getAirLineName(airline)}</p>
-                </>
-              ))}
+          <Col xs={3} className="text-center">
+            <Row>
+              {airlines &&
+                airlines.map((airline) => (
+                  <Col>
+                    <Image
+                      src={`https://goibibo.ibcdn.com/images/v2/carrierImages/${airline}.gif`}
+                      className="ui fluid rounded image airline-logo"
+                    />
+                    <p className="fli-code">{this.getAirLineName(airline)}</p>
+                  </Col>
+                ))}
+            </Row>
           </Col>
-          <Col xs={6} className="text-center">
+          <Col xs={7} className="text-center">
             <Row>
               <Col className="text-center">
                 <div>
@@ -81,27 +83,38 @@ class FlightListingComponent extends React.Component {
               </Col>
             </Row>
             <div title="Departure" className="flightDurationAndStops">
-              <b> {new Date(dTimeUTC * 1000).toDateString("en-US")}</b>
-              <FontAwesomeIcon icon={faClock} className="side-margin-5" />
-              {fly_duration}
+              <div>
+                <b> {new Date(dTimeUTC * 1000).toDateString("en-US")}</b>
+                <FontAwesomeIcon icon={faClock} className="side-margin-5" />
+                {fly_duration}
+              </div>
+              <p className="fli-stops-seperator"></p>
+              <div className="text-center">
+                {route &&
+                  route.map((direction, index) => {
+                    return (
+                      <span className="fli-code">
+                        {index === 0 ? cityFrom : direction.cityTo}
+                        {index !== route.length - 1 ? <span> | </span> : null}
+                      </span>
+                    );
+                  })}
+              </div>
             </div>
           </Col>
 
-          <Col xs={2} className="flex-bottom">
+          <Col xs={1} className="flex-bottom">
             <div className="price-section">
               <span>
                 <b>
-                  <FontAwesomeIcon
-                    icon={faRupeeSign}
-                    className="side-margin-5"
-                  />
+                  <FontAwesomeIcon icon={faRupeeSign} />
                   {price}
                 </b>
               </span>
               {/* <strike>$82</strike> */}
             </div>
           </Col>
-          <Col xs={2} className="flex-bottom">
+          <Col xs={1} className="flex-bottom">
             <div className="price-section">
               {/* <button className="ui blue small button rounded" role="button"> */}
               <Button variant="primary">Book</Button>

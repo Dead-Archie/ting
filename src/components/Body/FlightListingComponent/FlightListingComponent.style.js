@@ -107,4 +107,12 @@ export const FlightDetails = styled.span`
     display: flex;
     flex-wrap: wrap;
   }
+  .fli-stops-seperator {
+    border-top: 2px solid #979797;
+    margin: 10px auto;
+  }
+  .fli-code {
+    color: #878787;
+    font-size: 11px;
+  }
 `;

@@ -19,7 +19,7 @@ function App() {
   return (
     <ThemeProvider theme={{ mode: "light" }}>
       <Container className="App">
-        <Header />
+        {/* <Header /> */}
         <Body />
       </Container>
     </ThemeProvider>
