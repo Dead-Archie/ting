@@ -145,6 +145,12 @@ class Body extends React.PureComponent {
           </Row>
         </Container>
         <Container>
+          {flightData && flightData.length !== 0 && (
+            <div className="Search-header">
+              Total Result found {flightData.length}
+            </div>
+          )}
+
           {flightData &&
             flightData.length !== 0 &&
             flightData.map((item, i) => {
