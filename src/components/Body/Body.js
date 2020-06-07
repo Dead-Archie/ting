@@ -41,6 +41,10 @@ class Body extends React.PureComponent {
 
   getFlightDetails = () => {
     const { flyFrom, to, dateFrom, dateTo } = this.state;
+    if (!flyFrom || !to || !dateFrom) {
+      alert("Please enter data to search");
+      return false;
+    }
     this.setState({
       isloading: true,
     });
@@ -70,6 +74,9 @@ class Body extends React.PureComponent {
 
   render() {
     const { flightData, isloading } = this.state;
+    const availableFlights =
+      (flightData && flightData.filter((item) => item.availability.seats)) ||
+      "";
     // const data = restaurantsData;
     console.log(flightData);
     return (
@@ -145,16 +152,18 @@ class Body extends React.PureComponent {
           </Row>
         </Container>
         <Container>
-          {flightData && flightData.length !== 0 && (
+          {availableFlights && availableFlights.length !== 0 && (
             <div className="Search-header">
-              Total Result found {flightData.length}
+              Total available flight found {availableFlights.length}
             </div>
           )}
 
-          {flightData &&
-            flightData.length !== 0 &&
-            flightData.map((item, i) => {
-              return <FlightListingComponent key={i} lists={item} />;
+          {availableFlights &&
+            availableFlights.length !== 0 &&
+            availableFlights.map((item, i) => {
+              if (item.availability.seats) {
+                return <FlightListingComponent key={i} lists={item} />;
+              }
             })}
           {flightData && flightData.length === 0 && (
             <div className="Search-header">No flights found in this route</div>
